@@ -12,19 +12,23 @@ services:
     container_name: user
     depends_on:
       - redis
+      - mongodb
+
   cart:
     build: ./cart
     image: dockerlearn255/cart:1.0.0
     container_name: cart
     depends_on:
-      - redis    
+      - redis   
+      - catalogue 
 
   Shipping:
     build: ./shipping
     image: dockerlearn255/shipping:1.0.0
     container_name: shipping
     depends_on:
-      - mysql    
+      - mysql 
+      - cart   
 
   frontend:
     build: ./frontend
@@ -37,6 +41,7 @@ services:
       - user
       - cart
       - shipping
+      - payment
 
   mongodb:
     build: ./Mongodb
@@ -49,15 +54,33 @@ services:
 
   mysql:
     build: ./mysql
-    image: dockerlearn255/mysql:1.0.0  #docker build -t dockerlearn255/mongodb:1.0.0 .  #it should be run from mongodb directory
-    container_name: mysql    
+    image: dockerlearn255/mysql:1.0.0 
+    container_name: mysql   
 
+  payment:
+    build: ./payment
+    image: dockerlearn255/payment:1.0.0
+    container_name: payment 
+    depends_on:
+      - user
+      - cart
+      - rabbitmq
+    environment:
+      CART_HOST: "cart"
+      CART_PORT: "8080"
+      USER_HOST: "user"
+      USER_PORT: "8080"
+      AMQP_HOST: "rabbitmq"
+      AMQP_USER: "roboshop"
+      AMQP_PASSWORD: "roboshop123"
+
+      
   rabbitmq:
     image: rabbitmq:3
     environment:
         RABBITMQ_DEFAULT_USER: user
         RABBITMQ_DEFAULT_PASS: password
-  container_name: rabbitmq  
+    container_name: rabbitmq
 
 networks:
   default:
