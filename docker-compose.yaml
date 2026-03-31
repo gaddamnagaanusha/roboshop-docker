@@ -1,7 +1,6 @@
 services:
   catalogue:
-    build: 
-      dockerfile: catalogue.dockerfile
+    build: ./catalogue
     image: dockerlearn255/catalogue:1.0.0
     container_name: catalogue
     depends_on:
