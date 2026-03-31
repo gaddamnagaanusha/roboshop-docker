@@ -39,3 +39,11 @@
 ## docker run -d --name frontend -p 80:80 --network roboshop frontend:1.0.0
 ## docker ps
 ## now we can access the website with public ip of ec2 instance
+
+* docker run -d --name redis --network roboshop redis:7
+* docker build -t user:1.0.0 .
+* docker run -d --name user --network roboshop user:1.0.0
+* docker run -d --name cart --network roboshop cart:1.0.0
+* 
+
+
