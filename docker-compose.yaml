@@ -1,7 +1,6 @@
 services:
   catalogue:
     build: 
-      context: ./catalogue
       dockerfile: dockerfile
     image: dockerleanrn255/catalogue:1.0.0
     container_name: catalogue
@@ -10,24 +9,23 @@ services:
 
   user:
     build: 
-      context: ./user
       dockerfile: dockerfile
     image: dockerleanrn255/user:1.0.0
     container_name: user
     depends_on:
       - redis
+
   frontend:
     build: 
-      context: ./frontend
       dockerfile: dockerfile
     image: dockerleanrn255/frontend:1.0.0
     container_name: frontend
     depends_on:
       - catalogue
       - user
+
   mongodb:
     build:
-      context: ./Mongodb
       dockerfile: dockerfile
     image: dockerleanrn255/mongodb:1.0.0  #docker build -t dockerlearn255/mongodb:1.0.0 .  #it should be run from mongodb directory
     container_name: mongodb    
