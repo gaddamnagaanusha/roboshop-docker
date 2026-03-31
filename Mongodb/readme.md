@@ -1,4 +1,4 @@
-lsblk
+**lsblk
 sudo growpart /dev/nvme0n1 4
 sudo lvextend -L+30G /dev/RootVG/varVol
 sudo xfs_growfs /var
@@ -38,4 +38,4 @@ cd ../frontend/
 docker build -t frontend:1.0.0 .
 docker run -d --name frontend -p 80:80 --network roboshop frontend:1.0.0
 docker ps
-now we can access the website with public ip of ec2 instance
+now we can access the website with public ip of ec2 instance**
