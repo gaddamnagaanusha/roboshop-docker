@@ -1,4 +1,4 @@
-# lsblk
+## lsblk
 # sudo growpart /dev/nvme0n1 4
 # sudo lvextend -L+30G /dev/RootVG/varVol
 # sudo xfs_growfs /var
