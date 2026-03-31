@@ -52,6 +52,13 @@ services:
     image: dockerlearn255/mysql:1.0.0  #docker build -t dockerlearn255/mongodb:1.0.0 .  #it should be run from mongodb directory
     container_name: mysql    
 
+  rabbitmq:
+    image: rabbitmq:3
+    environment:
+        RABBITMQ_DEFAULT_USER: user
+        RABBITMQ_DEFAULT_PASS: password
+  container_name: rabbitmq  
+
 networks:
   default:
     driver: bridge
