@@ -28,7 +28,7 @@ services:
 
   mongodb:
     build:
-      dockerfile: mongodb.dockerfile
+      dockerfile: Mongodb.dockerfile
     image: dockerlearn255/mongodb:1.0.0  #docker build -t dockerlearn255/mongodb:1.0.0 .  #it should be run from mongodb directory
     container_name: mongodb    
 
