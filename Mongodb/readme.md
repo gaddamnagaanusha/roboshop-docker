@@ -15,3 +15,27 @@ sudo systemctl status --now docker
 
 sudo usermod -aG docker ec2-user
 
+
+
+docker build -t mongodb:1.0.0 .
+docker images
+docker run -d --name mongodb mongodb:1.0.0
+docker ps -a
+cd ../catalogue/
+docker build -t catalogue:1.0.0 .
+docker run -d --name catalogue catalogue:1.0.0
+docker exec -it catalogue bash
+docker logs catalogue
+docker network create roboshop
+docker network ls
+docker network disconnect bridge mongodb
+docker network disconnect bridge catalogue
+docker network connect roboshop mongodb
+docker network connect roboshop catalogue
+docker exec -it catalogue bash
+curl http://localhost:8080/health
+cd ../frontend/
+docker build -t frontend:1.0.0 .
+docker run -d --name frontend -p 80:80 --network roboshop frontend:1.0.0
+docker ps
+now we can access the website with public ip of ec2 instance
