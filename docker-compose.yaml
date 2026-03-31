@@ -47,15 +47,21 @@ services:
     build: ./Mongodb
     image: dockerlearn255/mongodb:1.0.0  #docker build -t dockerlearn255/mongodb:1.0.0 .  #it should be run from mongodb directory
     container_name: mongodb    
+    volumes:
+      - mongodb:/data/db   #this is for data persistence, so that even if container is removed, data will be there in volume and can be reused by new container.
 
   redis:
     image: redis:7.0
     container_name: redis 
+    volumes:
+      - redis:/data   #this is for data persistence, so that even if container is removed, data will be there in volume and can be reused by new container.
 
   mysql:
     build: ./mysql
     image: dockerlearn255/mysql:1.0.0 
-    container_name: mysql   
+    container_name: mysql  
+    volumes:
+      - mysql:/var/lib/mysql   #this is for data persistence, so that even if container is removed, data will be there in volume and can be reused by new container. 
 
   payment:
     build: ./payment
@@ -81,9 +87,19 @@ services:
         RABBITMQ_DEFAULT_USER: user
         RABBITMQ_DEFAULT_PASS: password
     container_name: rabbitmq
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq   #this is for data persistence, so that even if container is removed, data will be there in volume and can be reused by new container.
+
 
 networks:
   default:
     driver: bridge
     name: roboshop 
-    external: false    
+    external: false  
+
+
+volumes:
+  mongodb:   # docker volume create mongodb
+  rabbitmq:
+  sql:
+  redis:      
