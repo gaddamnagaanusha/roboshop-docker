@@ -1,7 +1,7 @@
 services:
   catalogue:
     build: 
-      dockerfile: dockerfile
+      dockerfile: catalogue.dockerfile
     image: dockerleanrn255/catalogue:1.0.0
     container_name: catalogue
     depends_on:
@@ -9,7 +9,7 @@ services:
 
   user:
     build: 
-      dockerfile: dockerfile
+      dockerfile: user.dockerfile
     image: dockerleanrn255/user:1.0.0
     container_name: user
     depends_on:
@@ -17,7 +17,7 @@ services:
 
   frontend:
     build: 
-      dockerfile: dockerfile
+      dockerfile: frontend.dockerfile
     image: dockerleanrn255/frontend:1.0.0
     container_name: frontend
     ports:
@@ -28,7 +28,7 @@ services:
 
   mongodb:
     build:
-      dockerfile: dockerfile
+      dockerfile: mongodb.dockerfile
     image: dockerleanrn255/mongodb:1.0.0  #docker build -t dockerlearn255/mongodb:1.0.0 .  #it should be run from mongodb directory
     container_name: mongodb    
 
