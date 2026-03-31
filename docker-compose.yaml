@@ -14,7 +14,15 @@ services:
     container_name: user
     depends_on:
       - redis
-
+  frontend:
+    build: 
+      dockerfile: frontend.dockerfile
+    image: dockerleanrn255/frontend:1.0.0
+    container_name: frontend
+    depends_on:
+      - catalogue
+      - user
+      - cart
   mongodb:
     build:
       dockerfile: Mongodb.dockerfile  #it moves to mongodb directory
