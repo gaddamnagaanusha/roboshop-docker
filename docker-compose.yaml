@@ -2,7 +2,7 @@ services:
   catalogue:
     build: 
       dockerfile: catalogue.dockerfile
-    image: dockerleanrn255/catalogue:1.0.0
+    image: dockerlearn255/catalogue:1.0.0
     container_name: catalogue
     depends_on:
       - mongodb
@@ -10,7 +10,7 @@ services:
   user:
     build: 
       dockerfile: user.dockerfile
-    image: dockerleanrn255/user:1.0.0
+    image: dockerlearn255/user:1.0.0
     container_name: user
     depends_on:
       - redis
@@ -18,7 +18,7 @@ services:
   frontend:
     build: 
       dockerfile: frontend.dockerfile
-    image: dockerleanrn255/frontend:1.0.0
+    image: dockerlearn255/frontend:1.0.0
     container_name: frontend
     ports:
       - "80:80"
@@ -29,7 +29,7 @@ services:
   mongodb:
     build:
       dockerfile: mongodb.dockerfile
-    image: dockerleanrn255/mongodb:1.0.0  #docker build -t dockerlearn255/mongodb:1.0.0 .  #it should be run from mongodb directory
+    image: dockerlearn255/mongodb:1.0.0  #docker build -t dockerlearn255/mongodb:1.0.0 .  #it should be run from mongodb directory
     container_name: mongodb    
 
   redis:
