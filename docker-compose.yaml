@@ -14,8 +14,7 @@ services:
       - redis
 
   frontend:
-    build: 
-      dockerfile: frontend.dockerfile
+    build: ./frontend
     image: dockerlearn255/frontend:1.0.0
     container_name: frontend
     ports:
