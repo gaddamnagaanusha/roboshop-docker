@@ -37,7 +37,12 @@ services:
 
   redis:
     image: redis:7.0
-    container_name: redis  
+    container_name: redis 
+
+  mysql:
+    build: ./mysql
+    image: dockerlearn255/mysql:1.0.0  #docker build -t dockerlearn255/mongodb:1.0.0 .  #it should be run from mongodb directory
+    container_name: mysql    
 
 networks:
   default:
