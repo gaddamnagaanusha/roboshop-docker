@@ -1,0 +1,32 @@
+services:
+  catalogue:
+    build: 
+      dockerfile: catalogue.dockerfile
+    image: dockerleanrn255/catalogue:1.0.0
+    container_name: catalogue
+    depends_on:
+      - mongodb
+
+  user:
+    build: 
+      dockerfile: user.dockerfile
+    image: dockerleanrn255/user:1.0.0
+    container_name: user
+    depends_on:
+      - redis
+
+  mongodb:
+    build:
+      dockerfile: Mongodb.dockerfile  #it moves to mongodb directory
+    image: dockerleanrn255/mongodb:1.0.0  #docker build -t dockerlearn255/mongodb:1.0.0 .  #it should be run from mongodb directory
+    container_name: mongodb    
+
+  redis:
+    image: redis:7.0
+    container_name: redis  
+
+networks:
+  default:
+    driver: bridge
+    name: roboshop 
+    external: false    
