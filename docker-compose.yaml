@@ -7,8 +7,7 @@ services:
       - mongodb
 
   user:
-    build: 
-      dockerfile: user.dockerfile
+    build: ./user
     image: dockerlearn255/user:1.0.0
     container_name: user
     depends_on:
