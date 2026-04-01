@@ -22,7 +22,7 @@ services:
       - redis   
       - catalogue 
 
-  Shipping:
+  shipping:
     build: ./shipping
     image: dockerlearn255/shipping:1.0.0
     container_name: shipping
